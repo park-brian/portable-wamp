@@ -1,3 +1,4 @@
+*.swp
 environment/httpd/
 environment/mysql/
 environment/php/
