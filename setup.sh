@@ -1,8 +1,9 @@
 #!/bin/bash
 
-WORKING_DIR="environment"
-OVERRIDES_DIR="$WORKING_DIR/overrides"
-TEMP_DIR="$WORKING_DIR/temp"
+WORK_DIR="environment"
+TEMP_DIR="$WORK_DIR/temp"
+OVERRIDES_DIR="$WORK_DIR/overrides"
+
 
 HTTPD_VERSION="2.4.25"
 MYSQL_VERSION="5.7.17"
@@ -43,8 +44,8 @@ mkdir -p $TEMP_DIR $OVERRIDES_DIR
 for COMPONENT in httpd mysql php bin
 do
   rm -rf "$TEMP_DIR/$COMPONENT"
-  rm -rf "$WORKING_DIR/$COMPONENT"
-  mkdir -p "$WORKING_DIR/$COMPONENT"
+  rm -rf "$WORK_DIR/$COMPONENT"
+  mkdir -p "$WORK_DIR/$COMPONENT"
 done
 
 ## ensure all files have been downloaded
@@ -72,15 +73,20 @@ for FILE in "${!FILE_EXTRACT_PATHS[@]}"; do
   echo "[UNZIP] $FILEPATH [->] ${TEMP_DIR}/${COMPONENT}"
   unzip -u -q $FILEPATH -d "${TEMP_DIR}/${COMPONENT}"
 
-  echo "[MV] $EXTRACT_PATH [->] ${WORKING_DIR}/${COMPONENT}"
-  mv -T "$EXTRACT_PATH" "${WORKING_DIR}/${COMPONENT}"
+  echo "[MV] $EXTRACT_PATH [->] ${WORK_DIR}/${COMPONENT}"
+  mv -T "$EXTRACT_PATH" "${WORK_DIR}/${COMPONENT}"
 
   echo
 done
 
 ## copy default overrides
-echo "[COPY] $OVERRIDES_DIR/* [->] $WORKING_DIR/"
-cp -rf $OVERRIDES_DIR/* "$WORKING_DIR/"
+echo "[COPY] $OVERRIDES_DIR/* [->] $WORK_DIR/"
+cp -rf $OVERRIDES_DIR/* "$WORK_DIR/"
 
 
-## set up mysql
+## initialize mysql
+echo "[INITIALIZE] MySQL"
+pushd $WORK_DIR/mysql/bin > /dev/null
+winpty mysqld.exe --initialize-insecure --log_syslog=0
+popd
+

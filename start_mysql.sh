@@ -1,5 +1,11 @@
 #!/bin/bash
-export PATH=$PATH:$PWD/httpd/bin:$PWD/php
-echo "mysql is now running ..."
 
-sleep 3
+WORK_DIR="environment"
+export PATH=$PATH:$PWD/environment/httpd/bin:$PWD/environment/php:$PWD/environment/mysql/bin:$PWD/environment/bin
+echo "mysqld is now running [ctrl+c to exit]"
+
+## start mysqld
+pushd $WORK_DIR/mysql/bin > /dev/null
+./mysqld.exe -u root --log_syslog=0
+popd
+
