@@ -3,7 +3,7 @@
 WORK_DIR="environment"
 TEMP_DIR="$WORK_DIR/temp"
 OVERRIDES_DIR="$WORK_DIR/overrides"
-
+HTDOCS_DIR="htdocs"
 
 HTTPD_VERSION="2.4.25"
 MYSQL_VERSION="5.7.17"
@@ -89,4 +89,11 @@ echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
 pushd $WORK_DIR/mysql/bin > /dev/null
 winpty mysqld.exe --initialize-insecure --log_syslog=0
 popd
+
+
+## create htdocs dir
+echo "[INITIALIZE] mkdir htdocs"
+mkdir -p htdocs
+echo '<?php phpinfo();' > htdocs/index.php
+
 
