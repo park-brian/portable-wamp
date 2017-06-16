@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export PATH=$PATH:$PWD/environment/httpd/bin:$PWD/environment/php:$PWD/environment/mysql/bin:$PWD/environment/bin
+WORK_DIR="environment"
+export PATH=$PATH:$PWD/$WORK_DIR/httpd/bin:$PWD/$WORK_DIR/php:$PWD/$WORK_DIR/mysql/bin:$PWD/$WORK_DIR/bin
 export COMPOSER_PROCESS_TIMEOUT=2000
 
 bash
