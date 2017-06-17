@@ -1,7 +1,6 @@
 *.swp
-htdocs/
+web/
 environment/httpd/
 environment/mysql/
 environment/php/
-environment/bin/
-environment/temp/
+environment/downloads/

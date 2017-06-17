@@ -1,9 +1,9 @@
 #!/bin/bash
 
 WORK_DIR="environment"
-TEMP_DIR="$WORK_DIR/temp"
-OVERRIDES_DIR="$WORK_DIR/overrides"
-HTDOCS_DIR="htdocs"
+CONFIG_DIR="configuration"
+DOWNLOADS_DIR="$WORK_DIR/downloads"
+WEB_DIR="web"
 
 HTTPD_VERSION="2.4.25"
 MYSQL_VERSION="5.7.17"
@@ -40,17 +40,17 @@ echo " - mysql ${MYSQL_VERSION}"
 echo " - php ${PHP_VERSION}"
 echo
 
-mkdir -p $TEMP_DIR $OVERRIDES_DIR
-for COMPONENT in httpd mysql php bin
+mkdir -p $DOWNLOADS_DIR $CONFIG_DIR
+for COMPONENT in httpd mysql php
 do
-  rm -rf "$TEMP_DIR/$COMPONENT"
+  rm -rf "$DOWNLOADS_DIR/$COMPONENT"
   rm -rf "$WORK_DIR/$COMPONENT"
   mkdir -p "$WORK_DIR/$COMPONENT"
 done
 
 ## ensure all files have been downloaded
 for FILE in "${!FILE_URLS[@]}"; do
-  FILEPATH="$TEMP_DIR/$FILE"
+  FILEPATH="$DOWNLOADS_DIR/$FILE"
 
   if [ ! -e "$FILEPATH" ]; then
     URL=${FILE_URLS[$FILE]}
@@ -66,22 +66,24 @@ echo
 
 ## extract files to the appropriate directories
 for FILE in "${!FILE_EXTRACT_PATHS[@]}"; do
-  FILEPATH="$TEMP_DIR/$FILE"
+  FILEPATH="$DOWNLOADS_DIR/$FILE"
   COMPONENT="${FILE_ARCHIVE_MAP[$FILE]}"
-  EXTRACT_PATH="$TEMP_DIR/$COMPONENT/${FILE_EXTRACT_PATHS[$FILE]}"
+  EXTRACT_PATH="$DOWNLOADS_DIR/$COMPONENT/${FILE_EXTRACT_PATHS[$FILE]}"
 
-  echo "[UNZIP] $FILEPATH [->] ${TEMP_DIR}/${COMPONENT}"
-  unzip -u -q $FILEPATH -d "${TEMP_DIR}/${COMPONENT}"
+  echo "[UNZIP] $FILEPATH [->] ${DOWNLOADS_DIR}/${COMPONENT}"
+  unzip -u -q $FILEPATH -d "${DOWNLOADS_DIR}/${COMPONENT}"
 
   echo "[MV] $EXTRACT_PATH [->] ${WORK_DIR}/${COMPONENT}"
   mv -T "$EXTRACT_PATH" "${WORK_DIR}/${COMPONENT}"
+
+  rm -rf "$DOWNLOADS_DIR/$COMPONENT"
 
   echo
 done
 
 ## copy default overrides
-echo "[COPY] $OVERRIDES_DIR/* [->] $WORK_DIR/"
-cp -rf $OVERRIDES_DIR/* "$WORK_DIR/"
+echo "[COPY] $CONFIG_DIR/* [->] $WORK_DIR/"
+cp -rf $CONFIG_DIR/* "$WORK_DIR/"
 
 
 ## initialize mysql
@@ -91,9 +93,9 @@ winpty mysqld.exe --initialize-insecure --log_syslog=0
 popd
 
 
-## create htdocs dir
-echo "[INITIALIZE] mkdir htdocs"
-mkdir -p htdocs
-echo '<?php phpinfo();' > htdocs/index.php
+## create web dir
+echo "[INITIALIZE] mkdir $WEB_DIR"
+mkdir -p $WEB_DIR
+echo '<?php phpinfo();' > $WEB_DIR/index.php
 
 
