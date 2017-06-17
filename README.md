@@ -13,6 +13,6 @@ cd portable-wamp
 ./setup.sh
 ```
 
----
 
-If git bash has been set as the default file handler for `.sh` files, you may double-click on each of the scripts to start each component. You may also use the command line. A `start_bash.sh` script is also provided for your convenience that launches mintty with each of the components in the path (including php composer). To exit from httpd and mysqld, use `ctrl+c`. 
+
+If git bash has been set as the default file handler for `.sh` files, you may double-click on each of the scripts to start each component (or just use the command line). A `start_bash.sh` script is also provided that launches git bash with each of the components in the path (including php composer). To exit from httpd and mysqld, use `ctrl+c`. 
