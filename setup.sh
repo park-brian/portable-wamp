@@ -90,7 +90,7 @@ cp -rf $CONFIG_DIR/* "$WORK_DIR/"
 echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
 pushd $WORK_DIR/mysql/bin > /dev/null
 winpty mysqld.exe --initialize-insecure --log_syslog=0
-popd
+popd > /dev/null
 
 
 ## create web dir
