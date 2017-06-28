@@ -89,7 +89,7 @@ cp -rf $CONFIG_DIR/* "$WORK_DIR/"
 ## initialize mysql
 echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
 pushd $WORK_DIR/mysql/bin > /dev/null
-winpty mysqld.exe --initialize-insecure --log_syslog=0
+./mysqld.exe --initialize-insecure --log_syslog=0
 popd > /dev/null
 
 
