@@ -2,8 +2,8 @@
 A portable Windows-Apache-MySQL-PHP environment based on mintty (git bash)
 
 ### Current Versions
- - Apache HTTP Server 2.4.25
- - MySQL 5.7.17
+ - Apache HTTP Server 2.4.26
+ - MySQL 5.7.18
  - PHP 7.1.6
 
 ### Getting Started
