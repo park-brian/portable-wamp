@@ -5,11 +5,11 @@ CONFIG_DIR="configuration"
 DOWNLOADS_DIR="$WORK_DIR/downloads"
 WEB_DIR="web"
 
-HTTPD_VERSION="2.4.25"
-MYSQL_VERSION="5.7.17"
+HTTPD_VERSION="2.4.26"
+MYSQL_VERSION="5.7.18"
 PHP_VERSION="7.1.6"
 
-HTTPD_ARCHIVE="httpd-${HTTPD_VERSION}-x64-vc14-r1.zip"
+HTTPD_ARCHIVE="httpd-${HTTPD_VERSION}-x64-vc14.zip"
 MYSQL_ARCHIVE="mysql-${MYSQL_VERSION}-winx64.zip"
 PHP_ARCHIVE="php-${PHP_VERSION}-Win32-VC14-x64.zip"
 
@@ -21,13 +21,13 @@ declare -A FILE_ARCHIVE_MAP=(
 
 declare -A FILE_URLS=(
   [$HTTPD_ARCHIVE]="http://www.apachehaus.com/downloads/${HTTPD_ARCHIVE}"
-  [$MYSQL_ARCHIVE]="https://downloads.mysql.com/archives/get/file/${MYSQL_ARCHIVE}"
+  [$MYSQL_ARCHIVE]="https://dev.mysql.com/get/Downloads/MySQL-5.7/${MYSQL_ARCHIVE}"
   [$PHP_ARCHIVE]="http://windows.php.net/downloads/releases/${PHP_ARCHIVE}"
 )
 
 declare -A FILE_EXTRACT_PATHS=(
   [$HTTPD_ARCHIVE]="Apache24"
-  [$MYSQL_ARCHIVE]="mysql-5.7.17-winx64"
+  [$MYSQL_ARCHIVE]="mysql-5.7.18-winx64"
   [$PHP_ARCHIVE]=""
 )
 
