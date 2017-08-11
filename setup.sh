@@ -5,9 +5,9 @@ CONFIG_DIR="configuration"
 DOWNLOADS_DIR="$WORK_DIR/downloads"
 WEB_DIR="web"
 
-HTTPD_VERSION="2.4.26"
-MYSQL_VERSION="5.7.18"
-PHP_VERSION="7.1.6"
+HTTPD_VERSION="2.4.27"
+MYSQL_VERSION="5.7.19"
+PHP_VERSION="7.1.8"
 
 HTTPD_ARCHIVE="httpd-${HTTPD_VERSION}-x64-vc14.zip"
 MYSQL_ARCHIVE="mysql-${MYSQL_VERSION}-winx64.zip"
@@ -27,7 +27,7 @@ declare -A FILE_URLS=(
 
 declare -A FILE_EXTRACT_PATHS=(
   [$HTTPD_ARCHIVE]="Apache24"
-  [$MYSQL_ARCHIVE]="mysql-5.7.18-winx64"
+  [$MYSQL_ARCHIVE]="mysql-${MYSQL_VERSION}-winx64"
   [$PHP_ARCHIVE]=""
 )
 
