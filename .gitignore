@@ -1,6 +1,7 @@
 *.swp
-web/
-environment/httpd/
-environment/mysql/
-environment/php/
-environment/downloads/
+/web/
+/environment/httpd/
+/environment/mysql/
+/environment/php/
+/environment/downloads/
+/environment/bin/composer
