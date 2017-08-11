@@ -83,13 +83,14 @@ done
 
 ## copy default overrides
 echo "[COPY] $CONFIG_DIR/* [->] $WORK_DIR/"
-cp -rf "$CONFIG_DIR/*" "$WORK_DIR/"
-
+cp -rf $CONFIG_DIR/* "$WORK_DIR/"
+echo
 
 ## initialize mysql
 echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
 pushd "$WORK_DIR/mysql/bin" > /dev/null
 ./mysqld.exe --initialize-insecure --log_syslog=0
+echo
 popd > /dev/null
 
 
@@ -97,10 +98,12 @@ popd > /dev/null
 echo "[INITIALIZE] mkdir $WEB_DIR/"
 mkdir -p "$WEB_DIR"
 echo '<?php phpinfo();' > "$WEB_DIR/index.php"
+echo
 
 
 ## install composer
-echo "[DOWNLOAD] composer [FROM] https://getcomposer.org/composer.phar"
+echo "[DOWNLOAD] composer.phar [FROM] https://getcomposer.org/composer.phar"
 pushd "$WORK_DIR/bin" > /dev/null
 curl -L -o composer https://getcomposer.org/composer.phar
+echo
 popd > /dev/null
