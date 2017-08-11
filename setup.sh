@@ -99,3 +99,8 @@ mkdir -p $WEB_DIR
 echo '<?php phpinfo();' > $WEB_DIR/index.php
 
 
+## install composer
+echo "[DOWNLOAD] composer"
+pushd $WORK_DIR/composer > /dev/null
+curl -L -o composer https://getcomposer.org/composer.phar
+popd
