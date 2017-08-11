@@ -40,7 +40,7 @@ echo " - mysql ${MYSQL_VERSION}"
 echo " - php ${PHP_VERSION}"
 echo
 
-mkdir -p $DOWNLOADS_DIR $CONFIG_DIR
+mkdir -p "$DOWNLOADS_DIR" "$CONFIG_DIR"
 for COMPONENT in httpd mysql php
 do
   rm -rf "$DOWNLOADS_DIR/$COMPONENT"
@@ -71,7 +71,7 @@ for FILE in "${!FILE_EXTRACT_PATHS[@]}"; do
   EXTRACT_PATH="$DOWNLOADS_DIR/$COMPONENT/${FILE_EXTRACT_PATHS[$FILE]}"
 
   echo "[UNZIP] $FILEPATH [->] ${DOWNLOADS_DIR}/${COMPONENT}"
-  unzip -u -q $FILEPATH -d "${DOWNLOADS_DIR}/${COMPONENT}"
+  unzip -u -q "$FILEPATH" -d "${DOWNLOADS_DIR}/${COMPONENT}"
 
   echo "[MV] $EXTRACT_PATH [->] ${WORK_DIR}/${COMPONENT}"
   mv -T "$EXTRACT_PATH" "${WORK_DIR}/${COMPONENT}"
@@ -83,24 +83,24 @@ done
 
 ## copy default overrides
 echo "[COPY] $CONFIG_DIR/* [->] $WORK_DIR/"
-cp -rf $CONFIG_DIR/* "$WORK_DIR/"
+cp -rf "$CONFIG_DIR/*" "$WORK_DIR/"
 
 
 ## initialize mysql
 echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
-pushd $WORK_DIR/mysql/bin > /dev/null
+pushd "$WORK_DIR/mysql/bin" > /dev/null
 ./mysqld.exe --initialize-insecure --log_syslog=0
 popd > /dev/null
 
 
 ## create web dir
-echo "[INITIALIZE] mkdir $WEB_DIR"
-mkdir -p $WEB_DIR
-echo '<?php phpinfo();' > $WEB_DIR/index.php
+echo "[INITIALIZE] mkdir $WEB_DIR/"
+mkdir -p "$WEB_DIR"
+echo '<?php phpinfo();' > "$WEB_DIR/index.php"
 
 
 ## install composer
-echo "[DOWNLOAD] composer"
-pushd $WORK_DIR/composer > /dev/null
+echo "[DOWNLOAD] composer [FROM] https://getcomposer.org/composer.phar"
+pushd "$WORK_DIR/bin" > /dev/null
 curl -L -o composer https://getcomposer.org/composer.phar
-popd
+popd > /dev/null
