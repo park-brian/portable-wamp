@@ -95,11 +95,12 @@ popd > /dev/null
 
 
 ## create web dir
-echo "[INITIALIZE] mkdir $WEB_DIR/"
-mkdir -p "$WEB_DIR"
-echo '<?php phpinfo();' > "$WEB_DIR/index.php"
-echo
-
+if [ ! -d $WEB_DIR ]; then
+  echo "[INITIALIZE] mkdir $WEB_DIR/"
+  mkdir -p "$WEB_DIR"
+  echo '<?php phpinfo();' > "$WEB_DIR/index.php"
+  echo
+fi
 
 ## install composer
 echo "[DOWNLOAD] composer.phar [FROM] https://getcomposer.org/composer.phar"
