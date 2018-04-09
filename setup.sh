@@ -89,7 +89,7 @@ echo
 ## initialize mysql
 echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
 pushd "$WORK_DIR/mysql/bin" > /dev/null
-./mysqld.exe --initialize-insecure --log_syslog=0
+./mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure --log_syslog=0
 echo
 popd > /dev/null
 
