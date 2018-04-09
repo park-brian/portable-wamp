@@ -87,7 +87,7 @@ cp -rf $CONFIG_DIR/* "$WORK_DIR/"
 echo
 
 ## initialize mysql
-echo "[INITIALIZE] mysqld.exe --initialize-insecure --log_syslog=0"
+echo "[INITIALIZE] mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure --log_syslog=0"
 pushd "$WORK_DIR/mysql/bin" > /dev/null
 ./mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure --log_syslog=0
 echo
