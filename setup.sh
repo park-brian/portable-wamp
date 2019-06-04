@@ -5,13 +5,19 @@ CONFIG_DIR="configuration"
 DOWNLOADS_DIR="$WORK_DIR/downloads"
 WEB_DIR="web"
 
-HTTPD_VERSION="2.4.34"
-MYSQL_VERSION="8.0.11"
-PHP_VERSION="7.2.7"
+HTTPD_VERSION="2.4.39"
+MYSQL_VERSION="8.0.16"
+PHP_VERSION="7.3.5"
 
-HTTPD_ARCHIVE="httpd-${HTTPD_VERSION}-o110h-x64-vc14.zip"
+HTTPD_ARCHIVE="httpd-${HTTPD_VERSION}-o111c-x64-vc15.zip"
 MYSQL_ARCHIVE="mysql-${MYSQL_VERSION}-winx64.zip"
 PHP_ARCHIVE="php-${PHP_VERSION}-Win32-VC15-x64.zip"
+
+FILE_ARCHIVE_SHA256_CHECKSUMS=(
+  [$HTTPD_ARCHIVE]="ea9af4ec183418f531affbc35a0c71f509a88b522b48f69ca147b192d2f9f5bf"
+  [$MYSQL_ARCHIVE]="51ab649e14570498a5f23b81578ed0e464d8e48fda83f097ea61087262d2e35e"
+  [$PHP_ARCHIVE]="caeb4f4161c7db4c7e5e956eb4dc058b5c595d079bbf581edaa2a6d2f173fac6php"
+)
 
 declare -A FILE_ARCHIVE_MAP=(
   [$HTTPD_ARCHIVE]="httpd"
@@ -87,9 +93,9 @@ cp -rf $CONFIG_DIR/* "$WORK_DIR/"
 echo
 
 ## initialize mysql
-echo "[INITIALIZE] mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure --log_syslog=0"
+echo "[INITIALIZE] mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure"
 pushd "$WORK_DIR/mysql/bin" > /dev/null
-./mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure --log_syslog=0
+./mysqld.exe --default-authentication-plugin=mysql_native_password --initialize-insecure
 echo
 popd > /dev/null
 
