@@ -1,16 +1,44 @@
 ## Portable WAMP
-A portable Windows-Apache-MySQL-PHP environment based on mintty (git bash)
+A portable Windows-Apache-MySQL-PHP environment
 
 ### Current Versions
  - Apache HTTP Server 2.4.43
- - MySQL 8.0.19
- - PHP 7.4.4
+ - MySQL Community Server 8.0.20
+ - PHP 7.4.6
 
 ### Getting Started
 ```sh
 git clone https://github.com/park-brian/portable-wamp
 cd portable-wamp
-./setup.sh
+cscript setup.js # for git bash, use `winpty cscript setup.js`
 ```
 
-If git bash has been set as the default file handler for `.sh` files, you may double-click on each of the scripts to start each component (or just use bash shell). A `start_bash.sh` script is also provided that launches git bash with each of the components in the path (including php composer). To exit from httpd and mysqld, use `ctrl+c`.
+### Further Instructions
+After setup completes, you should update your mysql root password (by default, the root user is created without a password).
+To do so, launch the mysql client (start_mysql_client.bat), and enter:
+
+```sql
+SET PASSWORD = 'my_password';
+```
+
+If you need to connect to a MS SQL Database, the `sqlsrv` and `pdo_sqlsrv` php extensions are included and enabled. However, the user
+must also install [Microsoft's ODBC Driver 17 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-2017).
+
+
+### Script Listing
+Note: You may launch the scripts below by double-clicking on them if your system associates .bat files with powershell.exe or cmd.exe.
+|Script Name            |Purpose|
+|-----------------------|-------|
+|setup.js               |Sets up environment (launch with cscript)|
+|shell.bat              |Launches shell with apache, mysql, and php folders in path|
+|start_httpd.bat        |Starts Apache http server|
+|start_mysqld.bat       |Starts MySQL server|
+|start_mysql_client.bat |Starts MySQL command-line client|
+
+### File Locations
+|Description                        |Location|
+|-----------------------------------|--------|
+|Apache HTTP Server Configuration   |environment\httpd\conf\httpd.conf|
+|Apache HTTP Server Logs            |environment\httpd\logs|
+|MySQL Server Configuration         |environment\mysql\my.ini|
+|PHP Configuration                  |environment\php\php.ini|
