@@ -3,5 +3,5 @@
 /environment/httpd/
 /environment/mysql/
 /environment/php/
-/environment/downloads/
+/environment/archive/
 /environment/bin/composer
