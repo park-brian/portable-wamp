@@ -2,9 +2,9 @@
 A portable Windows-Apache-MySQL-PHP environment
 
 ### Current Versions
- - Apache HTTP Server 2.4.43
- - MySQL Community Server 8.0.20
- - PHP 7.4.6
+ - Apache HTTP Server 2.4.46
+ - MySQL Community Server 8.0.21
+ - PHP 7.4.8
 
 ### Getting Started
 ```sh
