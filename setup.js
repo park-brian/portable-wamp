@@ -3,7 +3,7 @@
 var resources = {
     httpd: {
         version: '2.4.46',
-        url: 'https://www.apachehaus.com/downloads/httpd-2.4.46-o111g-x86-vc15.zip',
+        url: 'https://www.apachehaus.com/downloads/httpd-2.4.46-o111g-x64-vc15.zip',
         subfolder: 'Apache24'
     },
     mysql: {
