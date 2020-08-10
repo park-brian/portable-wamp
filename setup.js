@@ -4,19 +4,16 @@ var resources = {
     httpd: {
         version: '2.4.43',
         url: 'http://www.apachehaus.com/downloads/httpd-2.4.43-o111f-x64-vc15.zip',
-        subfolder: 'Apache24',
-        sha256: '1bc0710222859ae84956753bd1f4ee0a49e503ce70bf2f6deb82d8f9f3dd81be'
+        subfolder: 'Apache24'
     },
     mysql: {
         version: '8.0.20',
         url: 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.20-winx64.zip',
-        subfolder: 'mysql-8.0.20-winx64',
-        sha256: 'b9a7592ac170a6c55ce4f20c16e120c789d3d89342ea5681362311e118103a8a'
+        subfolder: 'mysql-8.0.20-winx64'
     },
     php: {
         version: '7.4.6',
-        url: 'https://windows.php.net/downloads/releases/archives/php-7.4.6-Win32-vc15-x64.zip',
-        sha256: '4ea958b8b0a537e930cde8b8a10e5ec2664028f995c391439ba294bd8695119a'
+        url: 'https://windows.php.net/downloads/releases/archives/php-7.4.6-Win32-vc15-x64.zip'
     }
 };
 
@@ -65,7 +62,7 @@ function main() {
     WScript.Echo("Downloading Composer\n");
     downloadFile('https://getcomposer.org/composer-stable.phar', 'environment\\bin\\composer.php');
 
-    WScript.Echo("Setup is complete. Please set a password for the MySQL root user after logging in.\n");
+    WScript.Echo("Setup is complete. Please set a password for the MySQL root user.\n");
 }
 
 /**
@@ -120,65 +117,3 @@ function downloadFile(url, filepath) {
     stream.SaveToFile(filepath, 2);
     stream.Close();
 }
-
-/*
-
-function getAbsolutePath(path) {
-    return WScript
-        .CreateObject('Scripting.FileSystemObject')
-        .GetAbsolutePathName(path);
-}
-
-function createFolder(path) {
-    if (!fileExists(path)) {
-        WScript
-            .CreateObject('Scripting.FileSystemObject')
-            .CreateFolder(path);
-    }
-}
-
-function deleteFile(path) {
-    if (fileExists(path)) {
-        WScript
-            .CreateObject('Scripting.FileSystemObject')
-            .DeleteFile(path);
-    }
-}*/
-
-/*
-function execute(cmd, sync) {
-    var shell = WScript.CreateObject('WScript.Shell');
-    var exec = shell.Exec(cmd);
-    while (sync && exec.Status == 0)
-         WScript.Sleep(100);
-    return {
-        status: exec.Status,
-        stdout: exec.StdOut.ReadAll(),
-        stderr: exec.StdErr.ReadAll()
-    };
-}
-
-function fileExists(path) {
-    var fileSystem = WScript.CreateObject('Scripting.FileSystemObject');
-    return fileSystem.FileExists(path) || fileSystem.FolderExists(path);
-}
-
-function formatString(string, data) {
-    return string.replace(/{[^{}]+}/g, function(match) {
-        return data[match.replace(/[{}]/g, '')] || '';
-    });
-}
-*/
-
-/*
-function getFileHash(filepath, hashType) {
-    var cmd = formatString('CertUtil -hashfile "{filepath}" "{hashType}"', {
-        filepath: filepath,
-        hashType: hashType || 'SHA256' // default hash type
-    });
-    var output = execute(cmd).stdout;
-    if (/failed/i.test(output))
-        throw(output);
-    return output.split('\n')[1];
-}
-*/
