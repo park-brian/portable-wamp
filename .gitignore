@@ -4,4 +4,4 @@
 /environment/mysql/
 /environment/php/
 /environment/archive/
-/environment/bin/composer
+/environment/bin/composer.php
