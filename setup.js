@@ -7,13 +7,13 @@ var resources = {
         subfolder: 'Apache24'
     },
     mysql: {
-        version: '8.0.21',
-        url: 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.21-winx64.zip',
-        subfolder: 'mysql-8.0.21-winx64'
+        version: '8.0.22',
+        url: 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip',
+        subfolder: 'mysql-8.0.22-winx64'
     },
     php: {
-        version: '7.4.8',
-        url: 'https://windows.php.net/downloads/releases/archives/php-7.4.8-Win32-vc15-x64.zip'
+        version: '7.4.11',
+        url: 'https://windows.php.net/downloads/releases/archives/php-7.4.11-Win32-vc15-x64.zip'
     }
 };
 
