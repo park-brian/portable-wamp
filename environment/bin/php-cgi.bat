@@ -1,2 +1,3 @@
 @echo off
-"%~dp0..\php\php-cgi.exe" -d extension_dir="%~dp0..\php\ext" %*
+set "PHP_ROOT=%~dp0..\php"
+"%PHP_ROOT%\php-cgi.exe" -d extension_dir="%PHP_ROOT%\ext" %*
