@@ -2,18 +2,18 @@
 // latest versions, download links, and target directories to extract
 var resources = {
     httpd: {
-        version: '2.4.46',
-        url: 'https://www.apachehaus.com/downloads/httpd-2.4.46-o111g-x64-vc15.zip',
+        version: '2.4.62',
+        url: 'https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.62-240718-win64-VS17.zip',
         subfolder: 'Apache24'
     },
     mysql: {
-        version: '8.0.22',
-        url: 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip',
-        subfolder: 'mysql-8.0.22-winx64'
+        version: '8.0.39',
+        url: 'https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.39-winx64.zip',
+        subfolder: 'mysql-8.0.39-winx64'
     },
     php: {
-        version: '7.4.11',
-        url: 'https://windows.php.net/downloads/releases/archives/php-7.4.11-Win32-vc15-x64.zip'
+        version: '8.3.9',
+        url: 'https://windows.php.net/downloads/releases/archives/php-8.3.9-Win32-vs16-x64.zip'
     }
 };
 
