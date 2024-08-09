@@ -43,10 +43,10 @@ Note: You may launch the scripts below by double-clicking on them if your system
 
 | Description                      | Location                          |
 | -------------------------------- | --------------------------------- |
-| Apache HTTP Server Configuration | environment\httpd\conf\httpd.conf |
-| Apache HTTP Server Logs          | environment\httpd\logs            |
-| MySQL Server Configuration       | environment\mysql\my.ini          |
-| PHP Configuration                | environment\php\php.ini           |
+| Apache HTTP Server Configuration | environment/httpd/conf/httpd.conf |
+| Apache HTTP Server Logs          | environment/httpd/logs            |
+| MySQL Server Configuration       | environment/mysql/my.ini          |
+| PHP Configuration                | environment/php/php.ini           |
 
 ### Drupal Quickstart
 
@@ -54,12 +54,12 @@ Note: You may launch the scripts below by double-clicking on them if your system
 # Launch a shell which has the composer binary in its path
 shell.bat
 
-# Create the Drupal website using composer under the web/ folder
+# Use composer to create a drupal website under the web/ folder
 rmdir web
 composer create-project drupal/recommended-project web
 
-# Since this creates a folder called web/web/ for the Drupal root, we should set this as the new DocumentRoot.
-# We can do this by uncommenting the following VirtualHost under environment\httpd\conf\extra\httpd-vhosts.conf
+# The recommended-project template creates the Drupal root under web/web/, so we should set this as the new DocumentRoot.
+# We can do this by uncommenting the following VirtualHost under environment/httpd/conf/extra/httpd-vhosts.conf
 # <VirtualHost *:80>
 #     DocumentRoot "../../web/web"
 #     <Directory "../../web/web">
