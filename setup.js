@@ -63,6 +63,11 @@ function main() {
     downloadFile('https://getcomposer.org/composer-stable.phar', 'environment\\bin\\composer.php');
 
     WScript.Echo("Setup is complete. Please set a password for the MySQL root user.\n");
+    WScript.Echo("Next steps:");
+    WScript.Echo("- Start HTTPD: start_httpd.bat");
+    WScript.Echo("- Start MySQL Daemon: start_mysqld.bat");
+    WScript.Echo("- Start MySQL Client (optional): start_mysql_client.bat");
+    WScript.Echo("- Start Shell w/ CLI tools (composer, php, mysql, etc): shell.bat");
 }
 
 /**
