@@ -4,16 +4,16 @@ A portable Windows-Apache-MySQL-PHP environment
 
 ### Current Versions
 
-- Apache HTTP Server 2.4.62
-- MySQL Community Server 8.0.39
-- PHP 8.3.9
+- Apache HTTP Server 2.4.65
+- MySQL Community Server 8.0.43
+- PHP 8.4.13
 
 ### Getting Started
 
 ```sh
 git clone https://github.com/park-brian/portable-wamp
 cd portable-wamp
-cscript setup.js # for git bash, use `winpty cscript setup.js`
+cscript setup.js # for git bash, use `bash setup.sh`
 ```
 
 ### Further Instructions
@@ -54,20 +54,10 @@ Note: You may launch the scripts below by double-clicking on them if your system
 # Launch a shell which has the composer binary in its path
 shell.bat
 
-# Use composer to create a drupal website under the web/ folder
-rmdir web
-composer create-project drupal/recommended-project web
-
-# The recommended-project template creates the Drupal root under web/web/, so we should set this as the new DocumentRoot.
-# We can do this by uncommenting the following VirtualHost under environment/httpd/conf/extra/httpd-vhosts.conf
-# <VirtualHost *:80>
-#     DocumentRoot "../../web/web"
-#     <Directory "../../web/web">
-#         Options Indexes FollowSymLinks
-#         AllowOverride All
-#         Require all granted
-#     </Directory>
-# </VirtualHost>
+# Use composer to create a drupal/legacy-project website under the web/ folder
+# Use instead of drupal/recommended-project to avoid nested web/web/ folder
+rmdir /S /Q web
+composer create-project drupal/legacy-project web
 
 # Next, start the httpd server
 start_httpd.bat
